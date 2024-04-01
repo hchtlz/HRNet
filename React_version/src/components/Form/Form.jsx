@@ -124,7 +124,7 @@ const Form = () => {
           className="form-input"
         />
       </label>
-      <Button title="Submit" type="submit" className="form-button" />
+      <Button title="Save" type="submit" className="form-button" />
     </form>
   );
 };

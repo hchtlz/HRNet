@@ -11,7 +11,7 @@
   font-weight: 600;
   justify-content: center;
   margin: 0 auto;
-  max-width: 25rem;
+  max-width: 50rem;
   padding: 1rem 5.2rem;
   text-decoration: none;
   transition: background-color 0.3s ease;
@@ -30,4 +30,16 @@
 .button-icon {
   margin-left: 0.5rem;
   width: 2rem;
+}
+
+.button-no-background {
+  background-color: transparent;
+  color: #1848f7;
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+}
+
+.button-no-background:hover,
+.button-no-background:active {
+  background-color: transparent;
+  color: #0d2f9e;
 }

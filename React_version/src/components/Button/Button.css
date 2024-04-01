@@ -1,0 +1,33 @@
+.button {
+  align-items: center;
+  appearance: none;
+  background-color: #1848f7;
+  border-radius: 10rem;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  font-size: 1.4rem;
+  font-weight: 600;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 25rem;
+  padding: 1rem 5.2rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.button:hover,
+.button:active {
+  background-color: #0d2f9e;
+}
+
+.button-wrapper {
+  text-align: center;
+}
+
+.button-icon {
+  margin-left: 0.5rem;
+  width: 2rem;
+}

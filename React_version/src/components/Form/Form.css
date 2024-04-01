@@ -11,8 +11,8 @@
 }
 
 .form-label-text {
-  margin-bottom: 1rem;
   font-weight: 500;
+  margin-bottom: 1rem;
 }
 
 .form-input {
@@ -44,14 +44,15 @@
 }
 
 .form-fieldset {
-  background-color: #1848f70d;
+  background-color: #6586ff0a;
   border: solid 1px #1848f724;
   margin: 1rem 0;
-  padding: 1rem 2rem
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
 }
 
 .form-fieldset legend {
   font-size: 1.6rem;
-  font-weight: 500;
+  font-weight: 600;
   margin-bottom: 1rem;
 }

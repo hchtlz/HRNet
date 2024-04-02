@@ -1,12 +1,11 @@
+// List.jsx
 import React, { useEffect, useState } from 'react';
 import Layout from "../../../components/Layout/Layout";
 import Title from "../../../components/Title/Title";
 import Button from "../../../components/Button/Button";
 import formDataFields from "../../../datas/data";
-import { DataTable } from 'primereact/datatable';
-import { Column } from 'primereact/column';
+import Table from "../../../components/Table/Table";
 import Icon from "../../../assets/home.svg";
-import "./List.css";
 
 const List = () => {
   const [employees, setEmployees] = useState([]);
@@ -16,16 +15,17 @@ const List = () => {
     setEmployees(storedEmployees);
   }, []);
 
+  const columns = formDataFields.map(field => ({
+    field: field.name,
+    header: field.label
+  }));
+
   return (
     <>
       <Layout>
         <Title title="Current Employees" />
         <div className="datatable-responsive">
-          <DataTable value={employees} tableStyle={{ maxWidth: '100%' }} className="p-datatable-custom">
-            {formDataFields.map((field, index) => (
-              <Column key={index} field={field.name} header={field.label}></Column>
-            ))}
-          </DataTable>
+          <Table data={employees} columns={columns} />
         </div>
       </Layout>
       <div className='go_back_button'>

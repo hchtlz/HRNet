@@ -3,6 +3,10 @@ import Form from "./pages/Employees/Form/Form"
 import List from "./pages/Employees/List/List"
 import NotFound from "./pages/404/404"
 import { PrimeReactProvider, PrimeReactContext } from 'primereact/api';
+import 'primereact/resources/themes/lara-light-indigo/theme.css';
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
+
 
 
 export default function App() {

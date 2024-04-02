@@ -44,3 +44,7 @@
 .datatable-responsive table tbody tr:hover {
   background-color: #edf2f7;
 }
+
+.go_back_button {
+  margin-top: 5rem;
+}

@@ -21,6 +21,8 @@
 .button:hover,
 .button:active {
   background-color: #0d2f9e;
+  color: white;
+  text-decoration: none;
 }
 
 .button-wrapper {
@@ -31,6 +33,8 @@
   margin-left: 0.5rem;
   width: 2rem;
 }
+
+/* Button with no background */
 
 .button-no-background {
   background-color: transparent;

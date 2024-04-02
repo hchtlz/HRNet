@@ -1,11 +1,8 @@
-// CustomTable.jsx
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { InputText } from 'primereact/inputtext';
 import "./Table.css";
-import "primereact/resources/themes/lara-light-cyan/theme.css";
-
 
 const CustomTable = ({ data, columns }) => {
   const [globalFilterValue, setGlobalFilterValue] = useState('');

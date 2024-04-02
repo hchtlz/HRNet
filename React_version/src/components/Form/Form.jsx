@@ -59,6 +59,7 @@ export default function Form() {
               onChange={value => handleChange(value, field.name)}
               className="form-input rsuite"
               placeholder={field.placeholder}
+              disabledDate={(date) => field.name === 'dateOfBirth' ? date > new Date() : false}
             />
           ) : field.name === 'state' ? (
             <select

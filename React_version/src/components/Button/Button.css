@@ -39,12 +39,22 @@
 .button-no-background {
   background-color: transparent;
   color: #1848f7;
-  font-size: clamp(1.2rem, 2vw, 1.4rem);
+  font-size: 1.2rem;
   font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
 }
 
 .button-no-background:hover,
 .button-no-background:active {
   background-color: transparent;
-  color: #0d2f9e;
+  color: #1848f7;
+}
+
+.button-no-background img {
+  transition: transform 0.3s ease;
+}
+
+.button-no-background:hover img {
+  transform: translateX(0.5rem);
 }

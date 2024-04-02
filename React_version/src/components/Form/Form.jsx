@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import formDataFields from "../../datas/data";
 import states from "../../datas/states";
+import departments from "../../datas/departments";
 import { DatePicker, SelectPicker } from 'rsuite';
 import 'rsuite/dist/rsuite.min.css';
 
@@ -31,18 +32,18 @@ export default function Form() {
   const requiredFields = [formData.firstName, formData.lastName];
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+      e.preventDefault();
 
-    if (!requiredFields.every(Boolean)) {
-      alert('First name and Last name are required');
-      return;
-    }
+      if (!requiredFields.every(Boolean)) {
+        alert(`${requiredFields.map((field, index) => !field && formDataFields[index].label).join(', ')} are required`);
+        return;
+      }
 
-    const employees = JSON.parse(localStorage.getItem('employees')) || [];
-    employees.push(formData);
-    localStorage.setItem('employees', JSON.stringify(employees));
-    navigate('/employees/list');
-  };
+      const employees = JSON.parse(localStorage.getItem('employees')) || [];
+      employees.push(formData);
+      localStorage.setItem('employees', JSON.stringify(employees));
+      navigate('/employees/list');
+    };
 
   return (
     <form onSubmit={handleSubmit} className="form-container">
@@ -59,6 +60,18 @@ export default function Form() {
               className="form-input rsuite"
               placeholder={field.placeholder}
             />
+          ) : field.name === 'state' ? (
+            <select
+              name="state"
+              value={formData.state}
+              onChange={(e) => handleChange(e.target.value, 'state')}
+              className="form-input"
+            >
+              <option value="">Select State</option>
+              {states.map((state, index) => (
+                <option key={index} value={state.abbreviation}>{state.name}</option>
+              ))}
+            </select>
           ) : field.name === 'department' ? (
             <select
               name="department"
@@ -66,9 +79,9 @@ export default function Form() {
               onChange={(e) => handleChange(e.target.value, 'department')}
               className="form-input"
             >
-              <option value="">Select State</option>
-              {states.map((state, index) => (
-                <option key={index} value={state.abbreviation}>{state.name}</option>
+              <option value="">Select Department</option>
+              {departments.map((department, index) => (
+                <option key={index} value={department.name}>{department.name}</option>
               ))}
             </select>
           ) : (

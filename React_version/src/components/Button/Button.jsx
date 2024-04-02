@@ -3,7 +3,7 @@ import "./Button.css";
 
 export default function Button({ title, link, icon, noBackground }) {
   const buttonClass = noBackground ? "button button-no-background" : "button";
-
+  <button className={buttonClass}>{title}</button>
   return (
     <div className="button-wrapper">
       <Link to={link} className={buttonClass}>

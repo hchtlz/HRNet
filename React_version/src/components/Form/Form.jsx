@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
-import Button from '../Button/Button';
 import './Form.css';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import formDataFields from "../../datas/data";
+import states from "../../datas/states";
+import { DatePicker, SelectPicker } from 'rsuite';
+import 'rsuite/dist/rsuite.min.css';
 
-const Form = () => {
+export default function Form() {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
-    dateOfBirth: '',
-    startDate: '',
+    dateOfBirth: null,
+    startDate: null,
     street: '',
     city: '',
     state: '',
@@ -15,118 +19,71 @@ const Form = () => {
     department: '',
   });
 
-  const handleChange = (e) => {
+  const navigate = useNavigate();
+
+  const handleChange = (value, name) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [name]: value,
     });
   };
 
+  const requiredFields = [formData.firstName, formData.lastName];
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+
+    if (!requiredFields.every(Boolean)) {
+      alert('First name and Last name are required');
+      return;
+    }
+
+    const employees = JSON.parse(localStorage.getItem('employees')) || [];
+    employees.push(formData);
+    localStorage.setItem('employees', JSON.stringify(employees));
+    navigate('/employees/list');
   };
 
   return (
     <form onSubmit={handleSubmit} className="form-container">
-      <label className="form-label">
-        <span className="form-label-text">First Name</span>
-        <input
-          type="text"
-          name="firstName"
-          value={formData.firstName}
-          onChange={handleChange}
-          className="form-input"
-          placeholder="Enter your first name"
-        />
-      </label>
-      <label className="form-label">
-        <span className="form-label-text">Last Name</span>
-        <input
-          type="text"
-          name="lastName"
-          value={formData.lastName}
-          onChange={handleChange}
-          className="form-input"
-          placeholder="Enter your last name"
-        />
-      </label>
-      <label className="form-label">
-        <span className="form-label-text">Date of Birth</span>
-        <input
-          type="date"
-          name="dateOfBirth"
-          value={formData.dateOfBirth}
-          onChange={handleChange}
-          className="form-input"
-        />
-      </label>
-      <label className="form-label">
-        <span className="form-label-text">Start Date</span>
-        <input
-          type="date"
-          name="startDate"
-          value={formData.startDate}
-          onChange={handleChange}
-          className="form-input"
-        />
-      </label>
-      <fieldset className="form-fieldset">
-        <legend className="form-legend">Address</legend>
-        <label className="form-label">
-          <span className="form-label-text">Street</span>
-          <input
-            type="text"
-            name="street"
-            value={formData.street}
-            onChange={handleChange}
-            className="form-input"
-          />
+      {formDataFields.map((field, index) => (
+        <label key={index} className="form-label">
+          <span className="form-label-text">{field.label}</span>
+          {field.name === 'dateOfBirth' || field.name === 'startDate' ? (
+            <DatePicker
+              oneTap
+              format="MM/dd/yyyy"
+              name={field.name}
+              value={formData[field.name]}
+              onChange={value => handleChange(value, field.name)}
+              className="form-input rsuite"
+              placeholder={field.placeholder}
+            />
+          ) : field.name === 'department' ? (
+            <select
+              name="department"
+              value={formData.department}
+              onChange={(e) => handleChange(e.target.value, 'department')}
+              className="form-input"
+            >
+              <option value="">Select State</option>
+              {states.map((state, index) => (
+                <option key={index} value={state.abbreviation}>{state.name}</option>
+              ))}
+            </select>
+          ) : (
+            <input
+              type={field.type}
+              name={field.name}
+              value={formData[field.name]}
+              onChange={e => handleChange(e.target.value, field.name)}
+              className="form-input"
+              placeholder={field.placeholder}
+            />
+          )}
         </label>
-        <label className="form-label">
-          <span className="form-label-text">City</span>
-          <input
-            type="text"
-            name="city"
-            value={formData.city}
-            onChange={handleChange}
-            className="form-input"
-          />
-        </label>
-        <label className="form-label">
-          <span className="form-label-text">State</span>
-          <input
-            type="text"
-            name="state"
-            value={formData.state}
-            onChange={handleChange}
-            className="form-input"
-          />
-        </label>
-        <label className="form-label">
-          <span className="form-label-text">Zip Code</span>
-          <input
-            type="text"
-            name="zipCode"
-            value={formData.zipCode}
-            onChange={handleChange}
-            className="form-input"
-          />
-        </label>
-      </fieldset>
-      <label className="form-label">
-        <span className="form-label-text">Department</span>
-        <input
-          type="text"
-          name="department"
-          value={formData.department}
-          onChange={handleChange}
-          className="form-input"
-        />
-      </label>
-      <Button title="Save" type="submit" className="form-button" />
+      ))}
+      <button type="submit" className="form-button">Save</button>
     </form>
   );
-};
-
-export default Form;
+}

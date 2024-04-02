@@ -52,7 +52,58 @@
 }
 
 .form-fieldset legend {
-  font-size: 1.6rem;
+  font-size: 1.1rem;
   font-weight: 600;
   margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+}
+
+.form-button {
+  align-items: center;
+  appearance: none;
+  background-color: #1848f7;
+  border-radius: 10rem;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  font-size: 1.4rem;
+  font-weight: 600;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 50rem;
+  padding: 1rem 5.2rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.form-button:hover,
+.form-button:active {
+  background-color: #0d2f9e;
+}
+
+/* React Suite Params */
+
+.rsuite {
+  padding: 0;
+}
+
+.rs-input {
+  background-color: #1848f70d!important;
+  padding: 1rem!important;
+  padding-left: 1.5rem!important;
+  border-top-right-radius: 0rem!important;
+  border-bottom-right-radius: 0rem!important;
+}
+
+.rs-input-group {
+  border: none!important;
+}
+
+.rs-input-group-addon {
+  background-color: #1848f70d!important;
+  border-top-right-radius: 0.5rem!important;
+  border-bottom-right-radius: 0.5rem!important;
 }

@@ -1,5 +1,4 @@
-// List.jsx
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Layout from "../../../components/Layout/Layout";
 import Title from "../../../components/Title/Title";
 import Button from "../../../components/Button/Button";

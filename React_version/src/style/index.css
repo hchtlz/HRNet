@@ -55,5 +55,15 @@
   p, h1, h2, h3, h4, h5, h6 {
     overflow-wrap: break-word;
   }
+
+  input:focus-visible {
+    outline: 2px solid #1675E0!important;
+    outline-offset: 2px;
+  }
+
+  input:placeholder {
+    color: #ABA7AF!important;
+    font-weight: 300!important;
+  }
 /***** END OF RESET *****/
 

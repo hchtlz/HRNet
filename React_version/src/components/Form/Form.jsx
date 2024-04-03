@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import formDataFields from "../../datas/data";
 import states from "../../datas/states";
 import departments from "../../datas/departments";
-import { DatePicker, SelectPicker } from 'rsuite';
+import { Dropdown } from 'primereact/dropdown';
+import { DatePicker } from 'rsuite';
 import 'rsuite/dist/rsuite.min.css';
 
 export default function Form() {
@@ -53,38 +54,31 @@ export default function Form() {
           {field.name === 'dateOfBirth' || field.name === 'startDate' ? (
             <DatePicker
               oneTap
-              format="MM/dd/yyyy"
               name={field.name}
               value={formData[field.name]}
               onChange={value => handleChange(value, field.name)}
               className="form-input rsuite"
               placeholder={field.placeholder}
-              disabledDate={(date) => field.name === 'dateOfBirth' ? date > new Date() : false}
+              shouldDisableDate={(date) => field.name === 'dateOfBirth' ? date > new Date() : false}
             />
           ) : field.name === 'state' ? (
-            <select
-              name="state"
-              value={formData.state}
-              onChange={(e) => handleChange(e.target.value, 'state')}
+            <Dropdown 
+              value={formData.state} 
+              onChange={(e) => handleChange(e.value, 'state')} 
+              options={states} 
+              optionLabel="name" 
+              placeholder="Sélectionner un État" 
               className="form-input"
-            >
-              <option value="">Select State</option>
-              {states.map((state, index) => (
-                <option key={index} value={state.abbreviation}>{state.name}</option>
-              ))}
-            </select>
+            />
           ) : field.name === 'department' ? (
-            <select
-              name="department"
+            <Dropdown
               value={formData.department}
-              onChange={(e) => handleChange(e.target.value, 'department')}
+              onChange={(e) => handleChange(e.value, 'department')}
+              options={departments}
+              optionLabel="name"
+              placeholder="Sélectionner un département"
               className="form-input"
-            >
-              <option value="">Select Department</option>
-              {departments.map((department, index) => (
-                <option key={index} value={department.name}>{department.name}</option>
-              ))}
-            </select>
+            />
           ) : (
             <input
               type={field.type}

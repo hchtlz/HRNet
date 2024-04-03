@@ -68,6 +68,7 @@
 .p-input-icon-left {
   position: relative;
   font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
 }
 
 .pi-search {
@@ -76,4 +77,18 @@
   top: 50%;
   transform: translateY(-50%);
   font-size: 1.5rem;
+}
+
+.p-inputtext {
+  line-height: 0.9;
+}
+
+.p-sortable-column-icon {
+  height: 1.2rem;
+  width: 1.2rem;
+}
+
+.p-dropdown-items {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.3rem;
 }

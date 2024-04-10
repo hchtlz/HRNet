@@ -7,6 +7,7 @@ import departments from "../../datas/departments";
 import { Dropdown } from 'primereact/dropdown';
 import { DatePicker } from 'rsuite';
 import 'rsuite/dist/rsuite.min.css';
+import { Modal } from 'modal-react-komponent';
 
 export default function Form() {
   const [formData, setFormData] = useState({
@@ -23,6 +24,8 @@ export default function Form() {
 
   const navigate = useNavigate();
 
+  const modalSuccess = Modal({ title: 'Employee created !', message: 'The employee has been created successfully', buttonText: 'Close' });
+
   const handleChange = (value, name) => {
     setFormData({
       ...formData,
@@ -36,13 +39,16 @@ export default function Form() {
       e.preventDefault();
 
       if (!requiredFields.every(Boolean)) {
-        alert(`${requiredFields.map((field, index) => !field && formDataFields[index].label).join(', ')} are required`);
+        const modalError = Modal({ message: `${requiredFields.map((field, index) => !field && formDataFields[index].label).join(', ')} are required`, title: 'Error', buttonText: 'Close' });
+        modalError.openModal();
         return;
       }
 
       const employees = JSON.parse(localStorage.getItem('employees')) || [];
       employees.push(formData);
       localStorage.setItem('employees', JSON.stringify(employees));
+      
+      modalSuccess.openModal();
       navigate('/employees/list');
     };
 
@@ -67,7 +73,7 @@ export default function Form() {
               onChange={(e) => handleChange(e.value, 'state')} 
               options={states} 
               optionLabel="name" 
-              placeholder="Sélectionner un État" 
+              placeholder="Select a State"
               className="form-input"
             />
           ) : field.name === 'department' ? (
@@ -76,7 +82,7 @@ export default function Form() {
               onChange={(e) => handleChange(e.value, 'department')}
               options={departments}
               optionLabel="name"
-              placeholder="Sélectionner un département"
+              placeholder="Select a Department"
               className="form-input"
             />
           ) : (
@@ -91,7 +97,7 @@ export default function Form() {
           )}
         </label>
       ))}
-      <button type="submit" className="form-button">Save</button>
+      <button type="submit" className="form-button">Submit</button>
     </form>
   );
 }

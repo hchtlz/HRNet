@@ -3,8 +3,11 @@
 }
 
 .datatable-responsive table {
-  font-family: 'Montserrat', sans-serif;
+  background-color: #fbfbfb;
   border-collapse: collapse;
+  border-left: 1px solid #e5e7eb;
+  border-right: 1px solid #e5e7eb;
+  font-family: 'Montserrat', sans-serif;
   width: 100%;
 }
 
@@ -14,7 +17,7 @@
 }
 
 .datatable-responsive table thead tr th {
-  background: #f9fafb;
+  background: #fbfbfb;
   border-bottom: 1px solid #e5e7eb;
   border-right: 1px solid #e5e7eb;
   border-top: 1px solid #e5e7eb;
@@ -32,6 +35,7 @@
 
 .datatable-responsive table tbody tr {
   border-bottom: 1px solid #e5e7eb;
+  background-color: #fbfbfb;
 }
 
 .datatable-responsive table tbody tr:last-child {
@@ -41,11 +45,7 @@
 .datatable-responsive table tbody td {
   color: #4b5563;
   font-size: 1.3rem;
-  padding: 1rem;
-}
-
-.datatable-responsive table tbody tr:nth-child(even) {
-  background-color: #859fff14;
+  padding: 2rem 1rem;
 }
 
 .datatable-responsive table tbody tr:hover {
@@ -91,4 +91,9 @@
 .p-dropdown-items {
   font-family: 'Montserrat', sans-serif;
   font-size: 1.3rem;
+}
+
+.p-paginator,
+.p-datatable-header {
+  background-color: #fbfbfb;
 }

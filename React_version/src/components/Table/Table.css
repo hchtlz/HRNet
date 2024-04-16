@@ -5,9 +5,9 @@
 .datatable-responsive table {
   background-color: #fbfbfb;
   border-collapse: collapse;
-  border-left: 1px solid #e5e7eb;
-  border-right: 1px solid #e5e7eb;
-  font-family: 'Montserrat', sans-serif;
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+  font-family: "Montserrat", sans-serif;
   width: 100%;
 }
 
@@ -18,9 +18,9 @@
 
 .datatable-responsive table thead tr th {
   background: #fbfbfb;
-  border-bottom: 1px solid #e5e7eb;
-  border-right: 1px solid #e5e7eb;
-  border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid transparent;
+  border-right: 1px solid transparent;
+  border-top: 1px solid transparent;
   color: #374151;
   font-size: 1.3rem;
   font-weight: 700;
@@ -30,12 +30,12 @@
 }
 
 .datatable-responsive table thead tr th:first-child {
-  border-left: 1px solid #e5e7eb;
+  border-left: 1px solid transparent;
 }
 
 .datatable-responsive table tbody tr {
-  border-bottom: 1px solid #e5e7eb;
   background-color: #fbfbfb;
+  border-bottom: 1px solid transparent;
 }
 
 .datatable-responsive table tbody tr:last-child {
@@ -52,13 +52,19 @@
   background-color: #edf2f7;
 }
 
+.p-datatable-table {
+  min-width: 123rem;
+  overflow-x: auto;
+}
+
 .go_back_button {
   margin-top: 5rem;
 }
 
 .p-datatable-header {
-  text-align: right;
+  border: none;
   margin-bottom: 3rem;
+  text-align: right;
 }
 
 .p-column-title {
@@ -66,9 +72,9 @@
 }
 
 .p-input-icon-left {
-  position: relative;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 500;
+  position: relative;
 }
 
 .pi-search {
@@ -83,13 +89,29 @@
   line-height: 0.9;
 }
 
+.p-input-icon-left input {
+  background-color: transparent;
+  width: 20rem;
+}
+
+.p-input-icon-left input::placeholder {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.1rem;
+}
+
 .p-sortable-column-icon {
   height: 1.2rem;
   width: 1.2rem;
 }
 
+.p-dropdown-label,
+.p-dropdown-trigger {
+  background-color: transparent;
+}
+
 .p-dropdown-items {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 1.3rem;
 }
 

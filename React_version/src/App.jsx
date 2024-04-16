@@ -1,11 +1,11 @@
-import { Routes, Route, Navigate } from "react-router-dom"
-import Form from "./pages/Employees/Form/Form"
-import List from "./pages/Employees/List/List"
-import NotFound from "./pages/404/404"
-import { PrimeReactProvider, PrimeReactContext } from 'primereact/api';
-import 'primereact/resources/themes/lara-light-indigo/theme.css';
-import 'primereact/resources/primereact.min.css';
-import 'primeicons/primeicons.css';
+import { Routes, Route, Navigate } from "react-router-dom";
+import Form from "./pages/Employees/Form/Form";
+import List from "./pages/Employees/List/List";
+import NotFound from "./pages/404/404";
+import { PrimeReactProvider } from "primereact/api";
+import "primereact/resources/themes/lara-light-indigo/theme.css";
+import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css";
 
 export default function App() {
   return (
@@ -17,5 +17,5 @@ export default function App() {
         <Route path="*" element={<NotFound />} />
       </Routes>
     </PrimeReactProvider>
-  )
+  );
 }

@@ -1,5 +1,3 @@
-import { notionistsNeutral } from "@dicebear/collection";
-import { createAvatar } from "@dicebear/core";
 import { Column } from "primereact/column";
 import { DataTable } from "primereact/datatable";
 import { InputText } from "primereact/inputtext";
@@ -42,18 +40,6 @@ const CustomTable = ({ data, columns }) => {
     );
   };
 
-  const renderAvatar = (rowData) => {
-    const name = rowData.firstName;
-    const avatar = createAvatar(notionistsNeutral, {
-      seed: name,
-      size: 40,
-      backgroundColor: ["ebebeb4d"],
-      radius: 50,
-    });
-    const svg = avatar.toString();
-    return <div dangerouslySetInnerHTML={{ __html: svg }} />;
-  };
-
   return (
     <DataTable
       value={tableData}
@@ -65,7 +51,6 @@ const CustomTable = ({ data, columns }) => {
       emptyMessage="No data found."
       globalFilter={globalFilterValue}
     >
-      <Column header="" body={renderAvatar} />
       {columns.map((column, index) => (
         <Column
           key={index}

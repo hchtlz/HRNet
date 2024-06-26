@@ -26,9 +26,13 @@
   width: 100%;
 }
 
-.form-input::placeholder {
-  color: #ABA7AF;
+.form-input::placeholder,
+.p-inputtext::placeholder {
+  color: #aba7af;
   font-weight: 300;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 500;
 }
 
 .form-textarea {
@@ -69,32 +73,14 @@
   background-color: #0d2f9e;
 }
 
-/* React Suite Params */
-
-.rsuite {
-  padding: 0;
-}
-
-.rs-input {
-  background-color: #1848f70d!important;
-  padding: 1rem!important;
-  padding-left: 1.5rem!important;
-  border-top-right-radius: 0rem!important;
-  border-bottom-right-radius: 0rem!important;
-}
-
-.rs-input-group {
-  border: none!important;
-}
-
-.rs-input-group-addon {
-  background-color: #1848f70d!important;
-  border-top-right-radius: 0.5rem!important;
-  border-bottom-right-radius: 0.5rem!important;
-}
-
 .p-dropdown-label {
-  color: #ABA7AF;
+  color: #aba7af;
   font-size: 1.4rem;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
+}
+
+.form-container .p-inputtext {
+  padding-left: 0;
+  background-color: transparent;
+  border: none;
 }

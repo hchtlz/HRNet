@@ -2,8 +2,7 @@ import { Modal } from "modal-react-komponent";
 import { Dropdown } from "primereact/dropdown";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { DatePicker } from "rsuite";
-import "rsuite/dist/rsuite.min.css";
+import { Calendar } from "primereact/calendar";
 import formDataFields from "../../datas/data";
 import departments from "../../datas/departments";
 import states from "../../datas/states";
@@ -68,16 +67,13 @@ export default function Form() {
         <label key={index} className="form-label">
           <span className="form-label-text">{field.label}</span>
           {field.name === "dateOfBirth" || field.name === "startDate" ? (
-            <DatePicker
-              oneTap
-              name={field.name}
+            <Calendar
               value={formData[field.name]}
-              onChange={(value) => handleChange(value, field.name)}
-              className="form-input rsuite"
+              onChange={(e) => handleChange(e.value, field.name)}
+              className="form-input"
               placeholder={field.placeholder}
-              shouldDisableDate={(date) =>
-                field.name === "dateOfBirth" ? date > new Date() : false
-              }
+              dateFormat="mm/dd/yy"
+              maxDate={new Date()}
             />
           ) : field.name === "state" ? (
             <Dropdown

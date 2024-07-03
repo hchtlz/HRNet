@@ -16,7 +16,7 @@
 }
 
 .form-input {
-  background-color: #1848f721;
+  background-color: #eef2ff;
   border-radius: 0.5rem;
   border: none;
   font-weight: 500;
@@ -28,7 +28,7 @@
 
 .form-input::placeholder,
 .p-inputtext::placeholder {
-  color: #aba7af;
+  color: #7d6192;
   font-weight: 300;
   font-family: "Montserrat", sans-serif;
   font-size: 1.4rem;
@@ -74,7 +74,7 @@
 }
 
 .p-dropdown-label {
-  color: #aba7af;
+  color: #7d6192;
   font-size: 1.4rem;
   font-family: "Montserrat", sans-serif;
 }

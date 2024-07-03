@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /private/
+Allow: /public/
+
+Sitemap: https://hr-net-one.vercel.app/sitemap.xml

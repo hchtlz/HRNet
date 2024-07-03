@@ -85,7 +85,10 @@
   border: none;
 }
 
-.p-dropdown {
+.p-dropdown,
+.p-inputwrapper {
   height: 4.7rem;
   width: 100%;
+  display: inline-flex;
+  box-sizing: border-box;
 }

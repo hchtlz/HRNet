@@ -84,3 +84,7 @@
   background-color: transparent;
   border: none;
 }
+
+.p-dropdown {
+  min-height: 4.8rem;
+}

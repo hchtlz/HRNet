@@ -1,7 +1,6 @@
 import { Modal } from "modal-react-komponent";
 import { Dropdown } from "primereact/dropdown";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { Calendar } from "primereact/calendar";
 import formDataFields from "../../datas/data";
 import departments from "../../datas/departments";
@@ -20,14 +19,20 @@ export default function Form() {
     zipCode: "",
     department: "",
   });
+  console.log(Modal);
 
-  const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
+  const [message, setMessage] = useState("");
+  const [title, setTitle] = useState("");
+  const [callbackOnClosed, setCallbackOnClosed] = useState(() => {});
 
-  const modalSuccess = Modal({
-    title: "Employee created !",
-    message: "The employee has been created successfully",
-    buttonText: "Close",
-  });
+  const navigateToEmployeesList = () => {
+    window.location.href = "/employees/list";
+  };
+
+  const toggleModal = () => {
+    setIsOpen(!isOpen);
+  };
 
   const handleChange = (value, name) => {
     setFormData({
@@ -42,14 +47,12 @@ export default function Form() {
     e.preventDefault();
 
     if (!requiredFields.every(Boolean)) {
-      const modalError = Modal({
-        message: `${requiredFields
+      setMessage(
+        `${requiredFields
           .map((field, index) => !field && formDataFields[index].label)
-          .join(", ")} are required`,
-        title: "Error",
-        buttonText: "Close",
-      });
-      modalError.openModal();
+          .join(", ")} are required`
+      );
+      setTitle("Error");
       return;
     }
 
@@ -57,8 +60,10 @@ export default function Form() {
     employees.push(formData);
     localStorage.setItem("employees", JSON.stringify(employees));
 
-    modalSuccess.openModal();
-    navigate("/employees/list");
+    setMessage("The employee has been created successfully");
+    setTitle("Employee created !");
+    setIsOpen(true);
+    setCallbackOnClosed(() => navigateToEmployeesList);
   };
 
   return (
@@ -105,9 +110,17 @@ export default function Form() {
           )}
         </label>
       ))}
-      <button type="submit" className="form-button">
+      <button type="submit" className="form-button" onClick={toggleModal}>
         Submit
       </button>
+      <Modal
+        message={message}
+        title={title}
+        buttonText="Close"
+        isOpen={isOpen}
+        toggleOpen={toggleModal}
+        callbackOnClosed={callbackOnClosed}
+      />
     </form>
   );
 }

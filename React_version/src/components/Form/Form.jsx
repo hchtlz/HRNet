@@ -19,7 +19,6 @@ export default function Form() {
     zipCode: "",
     department: "",
   });
-  console.log(Modal);
 
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState("");
